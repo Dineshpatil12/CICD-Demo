@@ -18,7 +18,7 @@ pipeline {
         
         }
         
-        stage ('Deploy to Integration') {
+    stage ('Deploy to Integration') {
             agent {node{
                    label "jenkins"}
             }
@@ -27,5 +27,3 @@ pipeline {
             }
         }
     }
-
-
