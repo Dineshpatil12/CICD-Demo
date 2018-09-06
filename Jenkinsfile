@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'mvn clean package'
                 sh 'echo "build ran"'
-                archiveArtifacts artifacts: './target/demo.war', fingerprint:true
+                archiveArtifacts artifacts: 'demo_master-*/target/root.war', fingerprint:true
             }
         }
         
