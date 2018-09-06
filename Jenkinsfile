@@ -11,14 +11,11 @@ pipeline {
             steps {
                 sh 'mvn clean package'
                 sh 'echo "build ran"'
-                archiveArtifacts artifacts: './target/root.war', fingerprint:true
-              
+                archiveArtifacts artifacts: './target/gameoflife.war', fingerprint:true'
             }
         }
         
-        }
-        
-    stage ('Deploy to Integration') {
+        stage ('Deploy to Integration') {
             agent {node{
                    label "jenkins"}
             }
@@ -27,3 +24,4 @@ pipeline {
             }
         }
     }
+}
