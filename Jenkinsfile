@@ -26,26 +26,7 @@ pipeline {
             }
         }
 
-        stage('Build  docker image') {
-            agent {
-                label 'master'
-            }
-            steps {
-                echo 'Hello, Docker. Building  docker image...'
-                unstash 'stash'
-                sh 'docker build -t ${DOCKER_REG}/${DOCKER_REPO}:${BUILD_NUMBER} -f ${WORKSPACE}/Dockerfile .'
-            }
-        }
-        stage('Push  docker image') {
-            agent {
-                label 'master'
-            }
-            steps {
-                echo 'Pushing  docker image...'
-                sh 'docker login -u ${DOCKER_USR} -p ${DOCKER_PWD} ${DOCKER_REG}'
-                sh 'docker push ${DOCKER_REG}/${DOCKER_REPO}:${BUILD_NUMBER}'
-            }
-        }        
+       
         stage ('Deploy to Integration') {
             agent {node{
                    label "jenkins"}
