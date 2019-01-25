@@ -10,7 +10,7 @@ pipeline {
 
     agent any 
     tools {
-      maven 'maven3'
+      maven 'apache-maven-3.3.1'
     }
     stages {
         stage('Build and Test') {
@@ -30,7 +30,7 @@ pipeline {
         stage ('Deploy to Integration') {
 //            agent {node{
 //                   label "jenkins"}
-            }
+//           }
             steps {
                 build job:'../deploy' , parameters:[string(name: 'BRANCH_NAME', value: "${env.BRANCH_NAME}")]
             }
