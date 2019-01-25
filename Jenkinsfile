@@ -14,9 +14,9 @@ pipeline {
     }
     stages {
         stage('Build and Test') {
-            agent { node{
-                       label "jenkins"}
-            } 
+//            agent { node{
+//                       label "jenkins"}
+//            } 
             steps {
                 sh 'mvn clean package'
                 sh 'echo "build ran"'
@@ -28,8 +28,8 @@ pipeline {
 
        
         stage ('Deploy to Integration') {
-            agent {node{
-                   label "jenkins"}
+//            agent {node{
+//                   label "jenkins"}
             }
             steps {
                 build job:'../deploy' , parameters:[string(name: 'BRANCH_NAME', value: "${env.BRANCH_NAME}")]
